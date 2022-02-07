@@ -24,11 +24,8 @@ public class HistoryServices {
     @Autowired
     AccountHistoryRepositoryJpaImpl accountHistryRepositoryJpa;
 
-    public List<HistoryResponse> doProcess(HistoryRequest request) throws Exception {
+    public List<HistoryResponse> doProcess(OffsetDateTime offsetStartDateTime,OffsetDateTime offsetEndDateTime) throws Exception {
 
-        //prepare time
-        OffsetDateTime offsetStartDateTime = OffsetDateTime.parse(request.getStartDate());
-        OffsetDateTime offsetEndDateTime = OffsetDateTime.parse(request.getEndDate());
 
         ZonedDateTime startDate = offsetStartDateTime.atZoneSameInstant(ZoneOffset.UTC);
         ZonedDateTime endDate = offsetEndDateTime.atZoneSameInstant(ZoneOffset.UTC);
